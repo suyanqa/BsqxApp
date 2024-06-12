@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    background-image: url("../../../public/images/背景图.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+/* 网页头部样式 */
+.header {
+    padding: 10px; /* 添加适当内边距  */
+    display: flex; /* 开启flex布局 */
+    align-items: center;/* 垂直居中 */
+}
+
+/* 网页Logo样式 */
+.header img {
+    max-height: 50px; /* 控制Logo最大高度 */
+    max-width: 100px; /* 控制Logo最大宽度 */
+    width: auto; /* 保持宽高比 */
+    height: auto; /* 保持宽高比 */
+    margin: 15px 0 0 30px;/* 添加外边距 顺序为 */
+}
+
+/* 头部内容区样式 */
+.header-content {
+    flex: 1;
+    padding: 20px;
+}
+
+/* 网页内容区样式 */
+.content {
+    height: 65vh;
+    display: flex;
+    flex-direction: row; /* 主轴方向起点在左边 */
+    justify-content: center; /* 项目在主轴居中对齐 */
+    align-items: center; /* 在侧轴上居中 */
+}
+
+/* 页脚样式 */
+.footer {
+    
+    text-align: center;
+    padding: 10px;
+}

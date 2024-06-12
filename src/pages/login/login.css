@@ -1,0 +1,120 @@
+.login {
+    width: 300px; /* 调整登录框宽度 */
+    height: auto; /* 自适应高度 */
+    padding: 20px; /* 添加内边距 */
+    border: 1px solid rgba(204, 204, 204, 0.4); /* 添加边框 */
+    border-radius: 5px; /* 添加圆角 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+}
+
+.login > h2 {
+    margin-bottom: 20px; /* 调整标题与输入框之间的间距 */
+    color: #333; /* 设置标题颜色 */
+    font-size: 24px; /* 设置标题字号 */
+    text-align: center; /* 标题居中 */
+}
+
+.login > .user,
+.login > .pwd {
+    width: 100%; /* 让用户和密码输入框的宽度相等 */
+    margin-bottom: 15px; /* 调整输入框之间的间距 */
+}
+
+.login > .user > label,
+.login > .pwd > label {
+    width: 100%; /* 让标签的宽度和输入框一致 */
+    display: block; /* 让标签占据单独的行 */
+    margin-bottom: 5px; /* 标签和输入框之间添加一些间距 */
+    color: #555; /* 设置标签颜色 */
+    font-size: 16px;
+}
+.login > form > .user > label > span,
+.login > .pwd > label > span{
+    font-size: 18px;
+}
+
+/* 默认输入框样式 */
+.login > form > .user > label > input,
+.login > form >.pwd > label > input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.3s ease; /* 添加过渡效果 */
+}
+
+/* 输入框聚焦时样式 */
+.login > .user > label > input:focus,
+.login > .pwd > label > input:focus {
+    border-color: #007bff; /* 聚焦时边框颜色变为主题色 */
+    outline: none; /* 移除聚焦时的默认外边框 */
+}
+
+/* 输入框鼠标悬停时样式 */
+.login > .user > label > input:hover,
+.login > .pwd > label > input:hover {
+    border-color: #999; /* 鼠标悬停时边框颜色变为灰色 */
+}
+
+
+.login > form > button {
+    margin-top: 20px; /* 添加顶部间距 */
+    padding: 10px 20px; /* 调整按钮内边距 */
+    border: none; /* 移除按钮边框 */
+    background-color: #007bff; /* 设置按钮背景颜色 */
+    color: #fff; /* 设置按钮文字颜色 */
+    border-radius: 3px; /* 添加圆角 */
+    cursor: pointer; /* 添加指针样式 */
+    font-size: 16px; /* 设置按钮字体大小 */
+    width: 100%; /* 使按钮宽度自适应 */
+}
+
+.login > button:hover {
+    background-color: #b30000; /* 设置鼠标悬停时的背景颜色 */
+}
+
+.login > .forgotPassword {
+    margin-top: 10px; /* 添加顶部间距 */
+    text-align: center; /* 文字居中 */
+}
+
+.login > .forgotPassword > a {
+    color: #007bffc4; /* 链接颜色 */
+    text-decoration: none; /* 移除下划线 */
+}
+
+.login > .forgotPassword > a:hover {
+    text-decoration: underline; /* 鼠标悬停时添加下划线 */
+}
+
+
+/* 拟态框样式 */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 5px;
+    color: #fff;
+    text-align: center;
+}
+
+.modal p {
+    margin: 0;
+}
+
+.success {
+    background-color: #4caf50; /* Green */
+}
+
+.failure {
+    background-color: #f44336; /* Red */
+}
