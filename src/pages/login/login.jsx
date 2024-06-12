@@ -66,7 +66,7 @@ const Login = () => {
                 if (isLoginSuccess) {
                     navigate('/home'); // 登录成功后重定向到仪表盘页面
                 }
-            }, 3000);
+            }, 1000);
         } catch (error) {
             console.error('登录失败:', error);
             // 设置modal状态为失败
@@ -83,7 +83,7 @@ const Login = () => {
                     isLoggedIn: false,
                     message: ''
                 });
-            }, 3000);
+            }, 1000);
         }
     };
 

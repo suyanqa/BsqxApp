@@ -1,15 +1,14 @@
 // src/components/layout/Layout.js
 import React from 'react';
-import { Outlet } from 'react-router-dom';
-import './layout.css';
+import'./layout.css';
 
-const Layout = () => {
+const Layout = ({ children }) => {
     return (
-        <>
+        <div className='layout'>
             {/* 头部 */}
             <div className='header'>
                 {/* 网页Logo */}
-                <img alt="Logo" src="/images/Logo.jpg" />
+                <img alt="Logo" src="/images/Logo.jpg"></img>
                 <div className="header-content">
                     <h1>博速汽修</h1>
                     <p>&nbsp;&nbsp;专业汽车维修服务</p>
@@ -17,11 +16,13 @@ const Layout = () => {
             </div>
             {/* 内容区 */}
             <div className='content'>
-                <Outlet />
+                {children}
             </div>
             {/* 页脚 */}
-            <div className='footer'></div>
-        </>
+            <div className='footer'>
+                {/* 页脚内容 */}
+            </div>
+        </div>
     );
 }
 
