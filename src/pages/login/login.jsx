@@ -1,3 +1,4 @@
+// src/pages/login/Login.js
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import PubSub from 'pubsub-js';
@@ -21,6 +22,7 @@ const Login = () => {
     const handleUserChange = (e) => {
         setUser(e.target.value);
     };
+
     /* 获取用户输入密码函数 */
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
