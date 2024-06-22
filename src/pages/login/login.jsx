@@ -1,88 +1,54 @@
-// src/pages/login/Login.js
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import PubSub from 'pubsub-js';
 import { login } from '../../api/services/api';
+import Cookies from 'js-cookie'; // 导入 js-cookie 库
 import './login.css';
 
 const Login = () => {
-    const navigate = useNavigate(); // 获取navigate函数
+    const navigate = useNavigate();
 
-    // 通过钩子函数设置状态
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
-    const [token, setToken] = useState('');
-    const [loginState, setLoginState] = useState({
-        isLoggedIn: false,
-        message: ''
-    });
-    const [modal, setModal] = useState(''); // 初始为空字符串
+    const [modal, setModal] = useState('');
 
-    /* 获取用户输入的账号函数 */
     const handleUserChange = (e) => {
         setUser(e.target.value);
     };
 
-    /* 获取用户输入密码函数 */
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
     };
 
-    /* 点击按钮后执行的函数 */
     const handleSubmit = async (e) => {
-        e.preventDefault(); // 阻止表单默认提交
+        e.preventDefault();
 
         try {
-            // 调用登录函数发送登录请求
             const response = await login(user, password);
-            // 请求到的响应写入data变量
-            let data = response.data;
-            console.log(data);
+            const { data } = response;
+            const { token } = data;
 
-            // 判断登录是否成功
-            const isLoginSuccess = data.token !== null && data.token !== '';
-
-            // 将token存储到状态中
-            setToken(data.token);
-            setLoginState({
-                isLoggedIn: isLoginSuccess,
-                message: data.message
-            });
-
-            // 设置modal状态，表示成功或失败
+            const isLoginSuccess = !!token; // 使用 !! 来判断 token 的真值
             setModal(isLoginSuccess ? 'success' : 'failure');
 
-            // 通过pubsub-js发布消息，消息名为token
-            PubSub.publish('token', token);
+            if (isLoginSuccess) {
+                // 将 token 存储到 cookie 中，有效期设置为 1 小时
+                Cookies.set('token', token, { expires: 1 / 24 }); // 1 小时过期
 
-            // 设置定时器，在3秒后隐藏提示消息并进行重定向
-            setTimeout(() => {
-                setModal(''); // 隐藏拟态框
-                setLoginState({
-                    isLoggedIn: false,
-                    message: ''
-                });
-
-                if (isLoginSuccess) {
-                    navigate('/home'); // 登录成功后重定向到仪表盘页面
-                }
-            }, 1000);
+                setTimeout(() => {
+                    setModal('');
+                    navigate('/home');
+                }, 1000);
+            } else {
+                setTimeout(() => {
+                    setModal('');
+                }, 1000);
+            }
         } catch (error) {
             console.error('登录失败:', error);
-            // 设置modal状态为失败
             setModal('failure');
-            setLoginState({
-                isLoggedIn: false,
-                message: '登录失败，请稍后重试。'
-            });
 
-            // 设置定时器，在3秒后隐藏提示消息
             setTimeout(() => {
-                setModal(''); // 隐藏拟态框
-                setLoginState({
-                    isLoggedIn: false,
-                    message: ''
-                });
+                setModal('');
             }, 1000);
         }
     };
@@ -107,10 +73,9 @@ const Login = () => {
                 </div>
             </form>
 
-            {/* 拟态框 */}
             {modal && (
                 <div className={`modal ${modal}`}>
-                    <p>{loginState.message}</p>
+                <p>{modal === 'success' ? '登录成功，正在跳转...' : '登录失败，请稍后重试。'}</p>
                 </div>
             )}
         </div>

@@ -5,7 +5,7 @@ module.exports = function(app) {
   app.use(
     '/api',
     createProxyMiddleware({
-      target: 'http://154.92.16.196:8080',
+      target: 'http://www.syjzb.store:8080',
       changeOrigin: true,
       pathRewrite: {
         '^/api': '', // 将/api前缀移除

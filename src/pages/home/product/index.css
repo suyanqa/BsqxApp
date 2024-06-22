@@ -1,0 +1,86 @@
+/* Reset Ant Design button styles to avoid conflicts */
+.ant-btn {
+    border: none;
+    box-shadow: none;
+    transition: background-color 0.3s;
+}
+
+/* Product list container */
+.product-list {
+    width: 100%; /* 撑开宽度 */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.product-list > h2 {
+    width: 100%; /* 让 h2 独占一行 */
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Product item */
+.product-item {
+    width: calc(20% - 20px); /* 一行五个产品，每个占 20% 宽度，减去间距 */
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.product-item h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.product-item p {
+    font-size: 14px;
+    color: #666666;
+    margin-bottom: 5px;
+}
+
+.product-item button {
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #1890ff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.product-item button:hover {
+    background-color: #40a9ff;
+}
+
+/* Pagination */
+.ant-pagination {
+    margin-top: 20px;
+    text-align: center; /* 居中分页 */
+}
+
+/* Add button */
+.add-button {
+    width: 100%; /* 让新增按钮占满一行 */
+    margin-top: 20px; /* 调整新增按钮的位置 */
+    text-align: center; /* 让新增按钮居中 */
+}
+
+.add-button button {
+    margin-left: 10px; /* 按钮间距 */
+}
+
+/* Pagination button */
+.pagination {
+    width: 100%; /* 让分页按钮占满一行 */
+    margin-top: 20px; /* 调整分页按钮的位置 */
+    text-align: center; /* 居中分页按钮 */
+}
